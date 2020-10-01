@@ -196,40 +196,36 @@ cp /etc/pwnagotchi/default.yml /etc/pwnagotchi/config.yml
 """
 ...
 # If using GPS:
-      gps:
-        enabled: true
-        speed: 4800 
-        device: /dev/ttyUSB0
+	main.plugins.gps.enabled = false
+	main.plugins.gps.speed = 4800
+	main.plugins.gps.device = "/dev/ttyUSB0"
 ...
 # If using the auto-backup module, remove the scp line because what are the odds?:
-        commands:
-          - 'tar czf /tmp/backup.tar.gz {files}'
-          - 'mv /tmp/backup.tar.gz /tmp/pwnagotchi_backup-$(date +%s).tar.gz'
+	main.plugins.auto_backup.commands = [
+	  "tar czf /root/pwnagotchi-backup.tar.gz {files}"
+	  "mv /tmp/backup.tar.gz /tmp/pwnagotchi_backup-$(date +%s).tar.gz"
+	]
 
 # monitor interface to use is actually the interface that will become the monitor interface:
-    iface: wlan1
+    main.iface = "wlan1"
 ...
 # Make sure these are these:
-    mon_start_cmd: /usr/bin/monstart
-    mon_stop_cmd: /usr/bin/monstop
+    main.mon_start_cmd = "/usr/bin/monstart"
+    main.mon_stop_cmd = "/usr/bin/monstop"
 ...
 # Turn off the display, unless you're using one, and set the local interface to view the face over network:
-ui:
-    display:
-        enabled: false
-        video:
-            enabled: true
-            address: '0.0.0.0'
-            port: 8080
+	ui.display.enabled = false
+	ui.web.enabled = true
+	ui.web.address = "0.0.0.0"
+	ui.web.port = 8080	    
 ...
 # bettercap conf:
-bettercap:
     # api scheme://hostname:port username and password
-    scheme: http
-    hostname: localhost
-    port: 8081
-    username: PwnagotchiUsername
-    password: PwnagotchiPassword
+    bettercap.scheme = "http"
+    bettercap.hostname = "localhost"
+    bettercap.port = 8081
+    bettercap.username = "PwnagotchiUsername"
+    bettercap.password = "PwnagotchiPassword"
 ...
 """
 
