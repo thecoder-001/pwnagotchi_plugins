@@ -1,0 +1,4 @@
+  # Change pwnagotchi's gps config to the updated variable names.
+ main.plugins.gps.enabled = true
+ main.plugins.gps.gpsdHost = localhost
+ main.plugins.gps.gpsdPort = 2947
