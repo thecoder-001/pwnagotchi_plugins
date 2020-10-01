@@ -1,5 +1,0 @@
-main:
-    plugins:
-      quickdic:
-        enabled: true
-        wordlist_folder: /opt/wordlists/
